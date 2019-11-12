@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require_relative './directors_database'
+require "pp"
 
 def directors_totals(source)
   result = {}
@@ -26,6 +27,16 @@ end
 
 def list_of_directors(source)
   # Write this implementation
+  index = 0
+  directors = []
+  
+  while index < source.length do
+    director = source[index]
+    directors << director[:name]
+    index += 1
+  end
+  
+  directors
 end
 
 def total_gross(source)
@@ -35,9 +46,21 @@ def total_gross(source)
   # 1. directors_totals: returns a Hash of { dir_name => gross }
   # 2. list_of_directors: names provides an Array of directors names (use
   #
-  # Visit each key (i.e. director name), look up the value in the hash
-  # returned by directors_totals, and add it to a running total. When done,
-  # return the total
+  # Visit each key (i.e. director name), look up the value in the hash returned by directors_totals, and add it to a running total. When done, return the total
+  
+  directors = list_of_directors(source)
+  directors_totals = directors_totals(source)
+  
+  total = 0
+  index = 0
+  
+  while index < directors.length do
+    director = directors[index]
+    total += directors_totals[director]
+    index += 1
+  end
+  
+  total
 end
 
 
