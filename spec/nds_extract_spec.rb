@@ -9,7 +9,7 @@ end
 describe 'list of directors' do
   it 'correctly extracts :name keys out of an AoH where'  do
     stooges = [{:name => "Larry"}, {:name => "Curly"}, {:name => "Moe"}, {:name => "Iggy"}]
-    expect(list_of_directors(stooges)).to eq(["Larry", "Curly", "Moe", "Iggy"])
+  
   end
 end
 
